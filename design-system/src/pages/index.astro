@@ -1,0 +1,353 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const colors = [
+  { name: 'Ink', token: '--color-ink', value: '#171A1F', usage: 'Primary text and dark surfaces' },
+  { name: 'Paper', token: '--color-paper', value: '#F4F0E7', usage: 'Warm base canvas' },
+  { name: 'Signal', token: '--color-signal', value: '#FF6B3D', usage: 'Primary actions and emphasis' },
+  { name: 'Electric', token: '--color-electric', value: '#526BFF', usage: 'Information and data focus' },
+  { name: 'Mint', token: '--color-mint', value: '#36D399', usage: 'Success and positive movement' },
+  { name: 'Amber', token: '--color-amber', value: '#F3B33D', usage: 'Warning and attention' },
+];
+
+const spacing = [
+  ['1', '0.25rem'],
+  ['2', '0.5rem'],
+  ['3', '0.75rem'],
+  ['4', '1rem'],
+  ['6', '1.5rem'],
+  ['8', '2rem'],
+  ['12', '3rem'],
+  ['16', '4rem'],
+];
+
+const modes = [
+  {
+    id: 'control',
+    label: 'Control',
+    product: 'Admin / Operations',
+    description: 'Compact spacing, strong dividers, tabular data, blue information accents, and persistent navigation.',
+    traits: ['Dense', 'Measured', 'Task-first'],
+  },
+  {
+    id: 'launch',
+    label: 'Launch',
+    product: 'B2B SaaS',
+    description: 'Confident display type, generous pacing, high-contrast calls to action, and proof-oriented section sequencing.',
+    traits: ['Clear', 'Optimistic', 'Conversion-led'],
+  },
+  {
+    id: 'atelier',
+    label: 'Atelier',
+    product: 'Creative Studio',
+    description: 'Asymmetric grids, oversized media, restrained chrome, and expressive type-scale contrast.',
+    traits: ['Editorial', 'Visual', 'Directional'],
+  },
+  {
+    id: 'dispatch',
+    label: 'Dispatch',
+    product: 'Publication',
+    description: 'Reading rhythm, sharp hierarchy, narrow measure, issue markers, and content-forward navigation.',
+    traits: ['Literate', 'Structured', 'Calm'],
+  },
+  {
+    id: 'provision',
+    label: 'Provision',
+    product: 'Catalog / Service',
+    description: 'Tactile cards, useful filters, clear availability, warm product imagery, and decisive booking or purchase paths.',
+    traits: ['Tactile', 'Useful', 'Inviting'],
+  },
+];
+
+const navItems = [
+  ['principles', 'Principles'],
+  ['foundations', 'Foundations'],
+  ['type', 'Typography'],
+  ['components', 'Components'],
+  ['forms', 'Forms'],
+  ['data', 'Data UI'],
+  ['modes', 'Modes'],
+  ['accessibility', 'Accessibility'],
+];
+---
+
+<BaseLayout
+  title="Fieldwork Design System"
+  description="A single-page reference for a flexible Astro marketplace template design system."
+>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Fieldwork design system home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>Fieldwork <small>Design System</small></span>
+    </a>
+    <nav class="top-nav" aria-label="Primary navigation">
+      <a href="#foundations">Foundations</a>
+      <a href="#components">Components</a>
+      <a href="#modes">Modes</a>
+    </nav>
+    <button class="icon-button" id="theme-toggle" type="button" aria-label="Switch color theme" aria-pressed="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.64 5.64l1.42 1.42m9.88 9.88 1.42 1.42m0-12.72-1.42 1.42M7.06 16.94l-1.42 1.42" />
+        <circle cx="12" cy="12" r="4" />
+      </svg>
+    </button>
+  </header>
+
+  <div class="page-shell" id="top">
+    <aside class="side-nav" aria-label="On this page">
+      <p class="eyebrow">On this page</p>
+      <ol>
+        {navItems.map(([href, label], index) => (
+          <li><a href={`#${href}`}><span>{String(index + 1).padStart(2, '0')}</span>{label}</a></li>
+        ))}
+      </ol>
+      <div class="side-note">
+        <strong>System status</strong>
+        <span><i aria-hidden="true"></i> Release candidate</span>
+        <small>Core 1.0 · Astro reference</small>
+      </div>
+    </aside>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <p class="kicker">One system. Five expressions.</p>
+          <h1 id="hero-title">Structure that leaves room for identity.</h1>
+          <p class="hero-copy">Fieldwork is a collection-level design system for five commercially distinct Astro templates. Shared foundations keep the products accessible and maintainable; expression modes prevent them from becoming reskins.</p>
+          <div class="button-row">
+            <a class="button primary" href="#foundations">Explore foundations</a>
+            <a class="button secondary" href="#modes">Compare modes</a>
+          </div>
+        </div>
+        <div class="hero-board" aria-label="Design system composition preview">
+          <div class="board-bar"><span></span><span></span><span></span><b>FIELD / 01</b></div>
+          <div class="board-grid">
+            <div class="board-stat"><small>Rhythm</small><strong>4px</strong><span>Base unit</span></div>
+            <div class="board-stat signal"><small>Modes</small><strong>05</strong><span>Distinct products</span></div>
+            <div class="board-chart" aria-hidden="true">
+              <i style="--h: 42%"></i><i style="--h: 68%"></i><i style="--h: 54%"></i><i style="--h: 86%"></i><i style="--h: 72%"></i><i style="--h: 94%"></i>
+            </div>
+            <div class="board-copy"><span>Semantic first</span><span>Keyboard visible</span><span>Content led</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="principles" class="section">
+        <div class="section-heading">
+          <p class="section-number">01</p>
+          <div><p class="eyebrow">Principles</p><h2>Rules that survive a redesign.</h2></div>
+        </div>
+        <div class="principle-grid">
+          <article><span>01</span><h3>Hierarchy before decoration</h3><p>Use scale, order, spacing, and contrast to make the next action obvious before adding ornament.</p></article>
+          <article><span>02</span><h3>Content determines density</h3><p>An admin surface and an editorial feature should not share the same rhythm simply for consistency.</p></article>
+          <article><span>03</span><h3>States are part of the design</h3><p>Focus, loading, empty, error, disabled, and success states receive the same care as the ideal state.</p></article>
+          <article><span>04</span><h3>Customize through meaning</h3><p>Components consume semantic roles so buyers can rebrand without searching for scattered hex values.</p></article>
+        </div>
+      </section>
+
+      <section id="foundations" class="section">
+        <div class="section-heading">
+          <p class="section-number">02</p>
+          <div><p class="eyebrow">Foundations</p><h2>A warm neutral core with decisive signals.</h2></div>
+        </div>
+        <div class="swatch-grid">
+          {colors.map((color) => (
+            <article class="swatch-card">
+              <div class="swatch" style={`--swatch: ${color.value}`}><span>{color.value}</span></div>
+              <div><h3>{color.name}</h3><code>{color.token}</code><p>{color.usage}</p></div>
+            </article>
+          ))}
+        </div>
+        <div class="foundation-row">
+          <article class="spec-card spacing-card">
+            <div class="card-heading"><div><p class="eyebrow">Spacing</p><h3>4px base rhythm</h3></div><code>--space-*</code></div>
+            <div class="space-stack">
+              {spacing.map(([name, value]) => (
+                <div><span>{name}</span><i style={`--w: ${value}`}></i><code>{value}</code></div>
+              ))}
+            </div>
+          </article>
+          <article class="spec-card radius-card">
+            <div class="card-heading"><div><p class="eyebrow">Shape</p><h3>Purposeful corners</h3></div><code>--radius-*</code></div>
+            <div class="radius-grid">
+              <div><i class="radius-0"></i><span>0 / Data</span></div>
+              <div><i class="radius-1"></i><span>4 / Control</span></div>
+              <div><i class="radius-2"></i><span>10 / Surface</span></div>
+              <div><i class="radius-3"></i><span>20 / Feature</span></div>
+            </div>
+            <p class="fine-print">Radius signals role. Dense data remains crisp; feature surfaces may be more tactile.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="type" class="section">
+        <div class="section-heading">
+          <p class="section-number">03</p>
+          <div><p class="eyebrow">Typography</p><h2>Direct, legible, and built for range.</h2></div>
+        </div>
+        <div class="type-specimen">
+          <div class="display-sample"><span>Display / 72</span><p>Useful can still feel distinct.</p></div>
+          <div class="type-row"><span>Heading 1</span><h1>Operational clarity at any scale.</h1><code>clamp(2.5rem, 6vw, 5rem)</code></div>
+          <div class="type-row"><span>Heading 2</span><h2>Build the path buyers can follow.</h2><code>clamp(2rem, 4vw, 3.5rem)</code></div>
+          <div class="type-row"><span>Body</span><p>Body text uses a comfortable measure, practical line height, and enough contrast for long reading sessions.</p><code>1rem / 1.65</code></div>
+          <div class="type-row data"><span>Data / Mono</span><p>MRR +18.4% · 2,408 ACTIVE · 99.97% UPTIME</p><code>ui-monospace</code></div>
+        </div>
+      </section>
+
+      <section id="components" class="section">
+        <div class="section-heading">
+          <p class="section-number">04</p>
+          <div><p class="eyebrow">Components</p><h2>Small contracts, complete states.</h2></div>
+        </div>
+        <div class="component-grid">
+          <article class="spec-card component-card wide">
+            <div class="card-heading"><div><p class="eyebrow">Actions</p><h3>Buttons and links</h3></div><span class="badge neutral">Keyboard ready</span></div>
+            <div class="component-demo button-demo">
+              <button class="button primary" type="button">Primary action</button>
+              <button class="button secondary" type="button">Secondary</button>
+              <button class="button quiet" type="button">Quiet action</button>
+              <button class="button primary" type="button" disabled>Disabled</button>
+              <a class="text-link" href="#components">Inline link <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="spec-card component-card">
+            <div class="card-heading"><div><p class="eyebrow">Status</p><h3>Badges</h3></div></div>
+            <div class="component-demo badge-demo">
+              <span class="badge success"><i></i> Active</span>
+              <span class="badge warning"><i></i> Review</span>
+              <span class="badge danger"><i></i> Blocked</span>
+              <span class="badge info"><i></i> Draft</span>
+            </div>
+          </article>
+          <article class="spec-card component-card">
+            <div class="card-heading"><div><p class="eyebrow">Feedback</p><h3>Alert</h3></div></div>
+            <div class="alert" role="status"><strong>Changes saved</strong><p>Your expression-mode tokens are ready to publish.</p></div>
+          </article>
+          <article class="spec-card component-card wide">
+            <div class="card-heading"><div><p class="eyebrow">Surfaces</p><h3>Cards carry hierarchy</h3></div></div>
+            <div class="mini-card-grid">
+              <div class="mini-card"><span class="mini-icon">A1</span><h4>Core primitive</h4><p>Shared behavior and semantic role.</p><a href="#modes">View mapping</a></div>
+              <div class="mini-card featured"><span class="mini-icon">B4</span><h4>Expression layer</h4><p>Product-specific visual decisions.</p><a href="#modes">Compare modes</a></div>
+              <div class="mini-card"><span class="mini-icon">C2</span><h4>Buyer override</h4><p>Clear token and content entry points.</p><a href="#accessibility">Read rules</a></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="forms" class="section">
+        <div class="section-heading">
+          <p class="section-number">05</p>
+          <div><p class="eyebrow">Forms</p><h2>Labels, help, errors, and intent.</h2></div>
+        </div>
+        <div class="form-layout">
+          <form class="spec-card demo-form" action="#forms" method="get">
+            <div class="form-heading"><div><p class="eyebrow">Project settings</p><h3>Create an expression mode</h3></div><span class="badge neutral">Demo form</span></div>
+            <div class="field-row">
+              <label class="field"><span>Mode name <b aria-hidden="true">*</b></span><input name="mode" value="Control" required /><small>Use a short, memorable internal name.</small></label>
+              <label class="field"><span>Product type</span><select name="product"><option>Admin / Operations</option><option>SaaS marketing</option><option>Editorial</option></select></label>
+            </div>
+            <label class="field"><span>Design intent</span><textarea name="intent" rows="4">Compact, precise, and optimized for repeated operational tasks.</textarea></label>
+            <fieldset class="choice-group"><legend>Density</legend><label><input type="radio" name="density" value="comfortable" /> Comfortable</label><label><input type="radio" name="density" value="compact" checked /> Compact</label><label><input type="radio" name="density" value="dense" /> Dense</label></fieldset>
+            <label class="check"><input type="checkbox" checked /><span><strong>Include reduced-motion rules</strong><small>Animations become immediate state changes when requested.</small></span></label>
+            <div class="form-error"><strong>Example validation</strong><span>Accent contrast must reach the control-text threshold.</span></div>
+            <div class="button-row"><button class="button primary" type="submit">Save mode</button><button class="button secondary" type="reset">Reset</button></div>
+          </form>
+          <aside class="form-notes">
+            <p class="eyebrow">Form contract</p>
+            <ol>
+              <li><span>01</span><p><strong>Persistent labels</strong>Placeholder text never replaces a label.</p></li>
+              <li><span>02</span><p><strong>Errors near cause</strong>Messages identify the field and recovery path.</p></li>
+              <li><span>03</span><p><strong>Visible state</strong>Focus, disabled, required, and selected states are unambiguous.</p></li>
+              <li><span>04</span><p><strong>Native first</strong>Use platform controls until a custom control provides measurable value.</p></li>
+            </ol>
+          </aside>
+        </div>
+      </section>
+
+      <section id="data" class="section">
+        <div class="section-heading">
+          <p class="section-number">06</p>
+          <div><p class="eyebrow">Data UI</p><h2>Dense without becoming cryptic.</h2></div>
+        </div>
+        <article class="data-panel">
+          <div class="data-toolbar">
+            <div><p class="eyebrow">Template inventory</p><h3>Collection readiness</h3></div>
+            <div class="toolbar-actions"><label class="search-field"><span class="sr-only">Search templates</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 4 4"/></svg><input type="search" placeholder="Search templates" /></label><button class="button secondary small" type="button">Filter <span aria-hidden="true">⌄</span></button></div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <caption class="sr-only">Readiness of the five example template expression modes</caption>
+              <thead><tr><th scope="col">Template</th><th scope="col">Type</th><th scope="col">Routes</th><th scope="col">Status</th><th scope="col">Quality</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead>
+              <tbody>
+                <tr><th scope="row"><span class="template-cell"><i class="avatar control">C</i><span>Control Deck<small>Updated today</small></span></span></th><td>Admin</td><td>12</td><td><span class="badge success"><i></i> Ready</span></td><td><span class="quality"><i style="--q: 94%"></i><b>94</b></span></td><td><button class="row-action" aria-label="Open actions for Control Deck">•••</button></td></tr>
+                <tr><th scope="row"><span class="template-cell"><i class="avatar launch">L</i><span>Launchline<small>Updated yesterday</small></span></span></th><td>SaaS</td><td>8</td><td><span class="badge warning"><i></i> Review</span></td><td><span class="quality"><i style="--q: 86%"></i><b>86</b></span></td><td><button class="row-action" aria-label="Open actions for Launchline">•••</button></td></tr>
+                <tr><th scope="row"><span class="template-cell"><i class="avatar atelier">A</i><span>Atelier North<small>Updated 3 days ago</small></span></span></th><td>Studio</td><td>7</td><td><span class="badge info"><i></i> Building</span></td><td><span class="quality"><i style="--q: 73%"></i><b>73</b></span></td><td><button class="row-action" aria-label="Open actions for Atelier North">•••</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="pagination"><p>Showing <strong>1–3</strong> of <strong>5</strong></p><div><button type="button" disabled aria-label="Previous page">←</button><button type="button" aria-current="page">1</button><button type="button">2</button><button type="button" aria-label="Next page">→</button></div></div>
+        </article>
+      </section>
+
+      <section id="modes" class="section">
+        <div class="section-heading">
+          <p class="section-number">07</p>
+          <div><p class="eyebrow">Expression modes</p><h2>Shared grammar, different voices.</h2></div>
+        </div>
+        <div class="mode-grid">
+          {modes.map((mode, index) => (
+            <article class:list={['mode-card', `mode-${mode.id}`]}>
+              <div class="mode-preview">
+                <span class="mode-index">0{index + 1}</span>
+                <div class="mode-window">
+                  <i></i><i></i><i></i>
+                  <b></b><b></b>
+                </div>
+              </div>
+              <div class="mode-copy"><p class="eyebrow">{mode.product}</p><h3>{mode.label}</h3><p>{mode.description}</p><ul>{mode.traits.map((trait) => <li>{trait}</li>)}</ul></div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="accessibility" class="section accessibility-section">
+        <div class="section-heading">
+          <p class="section-number">08</p>
+          <div><p class="eyebrow">Accessibility</p><h2>Quality gates, not optional polish.</h2></div>
+        </div>
+        <div class="access-grid">
+          <article><span class="access-icon">⌨</span><div><h3>Keyboard complete</h3><p>Every control is reachable, ordered logically, and visibly focused.</p></div></article>
+          <article><span class="access-icon">Aa</span><div><h3>Contrast measured</h3><p>Text, controls, status colors, focus rings, and chart series are checked.</p></div></article>
+          <article><span class="access-icon">◉</span><div><h3>Meaning beyond color</h3><p>Icons, labels, patterns, and summaries reinforce visual data distinctions.</p></div></article>
+          <article><span class="access-icon">↯</span><div><h3>Motion is optional</h3><p>Reduced-motion preferences remove nonessential movement without hiding state.</p></div></article>
+        </div>
+        <div class="do-dont">
+          <div class="do"><p class="eyebrow">Do</p><strong>Design the mobile task.</strong><span>Decide what users need to accomplish and restructure the interface around it.</span></div>
+          <div class="dont"><p class="eyebrow">Avoid</p><strong>Compressing the desktop.</strong><span>Hiding columns and shrinking type is not a responsive strategy.</span></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><p><strong>Fieldwork Design System</strong><small>Built as an Astro marketplace collection reference.</small></p></div>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <script>
+    const button = document.querySelector<HTMLButtonElement>('#theme-toggle');
+    const updateButton = () => {
+      if (!button) return;
+      const dark = document.documentElement.dataset.theme === 'dark';
+      button.setAttribute('aria-pressed', String(dark));
+      button.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+    };
+    updateButton();
+    button?.addEventListener('click', () => {
+      const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem('ds-theme', next);
+      updateButton();
+    });
+  </script>
+</BaseLayout>
